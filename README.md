@@ -5,7 +5,7 @@
 
 ## Project Overview
 
-这是一个**新拟态风格 (Neumorphism)** 的网页音乐播放器应用，基于 React + TypeScript + Vite 构建。应用集成了第三方音乐 API，支持歌曲搜索、播放、歌单管理、收藏等功能。
+这是一个**新拟态风格 (Neumorphism)** 的网页音乐播放器应用，基于 React + TypeScript + Vite 构建。应用集成了第三方网易云音乐 API，支持歌曲搜索、播放、歌单管理、收藏等功能。
 
 ### Key Features
 
