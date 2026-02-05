@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    // 关键修改：将 tsc -b 改为 npx tsc -b，其余逻辑不变
-    "build": "npx tsc -b && vite build",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
