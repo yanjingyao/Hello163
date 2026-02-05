@@ -1,0 +1,377 @@
+/* 新拟态样式系统 */
+
+:root {
+  --bg-primary: #F0F2F5;
+  --bg-secondary: #FFFFFF;
+  --text-primary: #2D3748;
+  --text-secondary: #718096;
+  --text-muted: #A0AEC0;
+  --shadow-light: #FFFFFF;
+  --shadow-dark: #A0AEC0;
+  --accent: #4A5568;
+  --accent-hover: #2D3748;
+  --border-radius: 16px;
+  --border-radius-sm: 8px;
+  --border-radius-lg: 24px;
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* 基础样式 */
+.neu-bg {
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+/* 凸起效果 - 默认状态 */
+.neu-raised {
+  background: var(--bg-primary);
+  border-radius: var(--border-radius);
+  box-shadow: 
+    8px 8px 16px var(--shadow-dark),
+    -8px -8px 16px var(--shadow-light);
+  transition: all var(--transition-normal);
+}
+
+/* 凹陷效果 */
+.neu-pressed {
+  background: var(--bg-primary);
+  border-radius: var(--border-radius);
+  box-shadow: 
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+}
+
+/* 扁平效果 */
+.neu-flat {
+  background: var(--bg-primary);
+  border-radius: var(--border-radius);
+  box-shadow: none;
+}
+
+/* 悬停抬起效果 */
+.neu-hover {
+  transition: all var(--transition-normal);
+}
+
+.neu-hover:hover {
+  box-shadow: 
+    12px 12px 24px var(--shadow-dark),
+    -12px -12px 24px var(--shadow-light);
+  transform: translateY(-2px);
+}
+
+/* 按钮按压效果 */
+.neu-active:active {
+  box-shadow: 
+    inset 3px 3px 6px var(--shadow-dark),
+    inset -3px -3px 6px var(--shadow-light);
+  transform: translateY(0);
+}
+
+/* 圆形变体 */
+.neu-circle {
+  border-radius: 50%;
+}
+
+/* 小型 */
+.neu-sm {
+  border-radius: var(--border-radius-sm);
+  box-shadow: 
+    4px 4px 8px var(--shadow-dark),
+    -4px -4px 8px var(--shadow-light);
+}
+
+.neu-sm.neu-pressed {
+  box-shadow: 
+    inset 2px 2px 4px var(--shadow-dark),
+    inset -2px -2px 4px var(--shadow-light);
+}
+
+/* 大型 */
+.neu-lg {
+  border-radius: var(--border-radius-lg);
+  box-shadow: 
+    12px 12px 24px var(--shadow-dark),
+    -12px -12px 24px var(--shadow-light);
+}
+
+/* 输入框样式 */
+.neu-input {
+  background: var(--bg-primary);
+  border: none;
+  border-radius: var(--border-radius);
+  box-shadow: 
+    inset 3px 3px 6px var(--shadow-dark),
+    inset -3px -3px 6px var(--shadow-light);
+  color: var(--text-primary);
+  padding: 12px 20px;
+  outline: none;
+  transition: all var(--transition-normal);
+}
+
+.neu-input::placeholder {
+  color: var(--text-muted);
+}
+
+.neu-input:focus {
+  box-shadow: 
+    inset 4px 4px 8px var(--shadow-dark),
+    inset -4px -4px 8px var(--shadow-light);
+}
+
+/* 滑块轨道 */
+.neu-slider-track {
+  background: var(--bg-primary);
+  border-radius: 999px;
+  box-shadow: 
+    inset 2px 2px 4px var(--shadow-dark),
+    inset -2px -2px 4px var(--shadow-light);
+  height: 12px;
+  position: relative;
+}
+
+/* 滑块填充 */
+.neu-slider-fill {
+  background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+  border-radius: 999px;
+  box-shadow: 
+    2px 2px 4px var(--shadow-dark),
+    -2px -2px 4px var(--shadow-light);
+  height: 100%;
+}
+
+/* 滑块 thumb */
+.neu-slider-thumb {
+  background: var(--bg-primary);
+  border-radius: 50%;
+  box-shadow: 
+    4px 4px 8px var(--shadow-dark),
+    -4px -4px 8px var(--shadow-light);
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+  transition: all var(--transition-fast);
+}
+
+.neu-slider-thumb:hover {
+  box-shadow: 
+    6px 6px 12px var(--shadow-dark),
+    -6px -6px 12px var(--shadow-light);
+  transform: scale(1.1);
+}
+
+.neu-slider-thumb:active {
+  box-shadow: 
+    inset 2px 2px 4px var(--shadow-dark),
+    inset -2px -2px 4px var(--shadow-light);
+}
+
+/* 文字样式 */
+.neu-text-primary {
+  color: var(--text-primary);
+}
+
+.neu-text-secondary {
+  color: var(--text-secondary);
+}
+
+.neu-text-muted {
+  color: var(--text-muted);
+}
+
+/* 专辑封面旋转动画 */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.album-spin {
+  animation: spin 10s linear infinite;
+}
+
+.album-spin-paused {
+  animation-play-state: paused;
+}
+
+/* 脉动动画 */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.neu-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* 涟漪效果 */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* 入场动画 */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.5s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s ease-out forwards;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--shadow-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* 选中状态 */
+.neu-selected {
+  box-shadow: 
+    inset 3px 3px 6px var(--shadow-dark),
+    inset -3px -3px 6px var(--shadow-light);
+}
+
+/* 禁用状态 */
+.neu-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* 标签样式 */
+.neu-tag {
+  background: var(--bg-primary);
+  border-radius: 999px;
+  box-shadow: 
+    3px 3px 6px var(--shadow-dark),
+    -3px -3px 6px var(--shadow-light);
+  color: var(--text-secondary);
+  font-size: 12px;
+  padding: 4px 12px;
+  transition: all var(--transition-fast);
+}
+
+.neu-tag:hover {
+  box-shadow: 
+    4px 4px 8px var(--shadow-dark),
+    -4px -4px 8px var(--shadow-light);
+  color: var(--text-primary);
+}
+
+.neu-tag.active {
+  box-shadow: 
+    inset 2px 2px 4px var(--shadow-dark),
+    inset -2px -2px 4px var(--shadow-light);
+  color: var(--accent);
+}
+
+/* 隐藏滚动条 */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* 响应式工具类 */
+@media (max-width: 640px) {
+  .neu-bg {
+    padding-bottom: 80px;
+  }
+}
+
+/* 安全区域适配 */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* 触摸优化 */
+@media (pointer: coarse) {
+  .neu-slider-thumb {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .neu-button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* 动画性能优化 */
+.will-change-transform {
+  will-change: transform;
+}
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
